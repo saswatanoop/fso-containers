@@ -1,0 +1,396 @@
+-MacBook-Air fso-containers % docker container run --help
+Usage:  docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Create and run a new container from an image
+
+Aliases:
+  docker container run, docker run
+
+Options:
+      --add-host list                    Add a custom host-to-IP mapping (host:ip)
+      --annotation map                   Add an annotation to the container (passed through to the OCI runtime) (default map[])
+  -a, --attach list                      Attach to STDIN, STDOUT or STDERR
+      --blkio-weight uint16              Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+      --blkio-weight-device list         Block IO weight (relative device weight) (default [])
+      --cap-add list                     Add Linux capabilities
+      --cap-drop list                    Drop Linux capabilities
+      --cgroup-parent string             Optional parent cgroup for the container
+      --cgroupns string                  Cgroup namespace to use (host|private)
+                                         'host':    Run the container in the Docker host's cgroup namespace
+                                         'private': Run the container in its own private cgroup namespace
+                                         '':        Use the cgroup namespace as configured by the
+                                                    default-cgroupns-mode option on the daemon (default)
+      --cidfile string                   Write the container ID to the file
+      --cpu-period int                   Limit CPU CFS (Completely Fair Scheduler) period
+      --cpu-quota int                    Limit CPU CFS (Completely Fair Scheduler) quota
+      --cpu-rt-period int                Limit CPU real-time period in microseconds
+      --cpu-rt-runtime int               Limit CPU real-time runtime in microseconds
+  -c, --cpu-shares int                   CPU shares (relative weight)
+      --cpus decimal                     Number of CPUs
+      --cpuset-cpus string               CPUs in which to allow execution (0-3, 0,1)
+      --cpuset-mems string               MEMs in which to allow execution (0-3, 0,1)
+  -d, --detach                           Run container in background and print container ID
+      --detach-keys string               Override the key sequence for detaching a container
+      --device list                      Add a host device to the container
+      --device-cgroup-rule list          Add a rule to the cgroup allowed devices list
+      --device-read-bps list             Limit read rate (bytes per second) from a device (default [])
+      --device-read-iops list            Limit read rate (IO per second) from a device (default [])
+      --device-write-bps list            Limit write rate (bytes per second) to a device (default [])
+      --device-write-iops list           Limit write rate (IO per second) to a device (default [])
+      --disable-content-trust            Skip image verification (default true)
+      --dns list                         Set custom DNS servers
+      --dns-option list                  Set DNS options
+      --dns-search list                  Set custom DNS search domains
+      --domainname string                Container NIS domain name
+      --entrypoint string                Overwrite the default ENTRYPOINT of the image
+  -e, --env list                         Set environment variables
+      --env-file list                    Read in a file of environment variables
+      --expose list                      Expose a port or a range of ports
+      --gpus gpu-request                 GPU devices to add to the container ('all' to pass all GPUs)
+      --group-add list                   Add additional groups to join
+      --health-cmd string                Command to run to check health
+      --health-interval duration         Time between running the check (ms|s|m|h) (default 0s)
+      --health-retries int               Consecutive failures needed to report unhealthy
+      --health-start-interval duration   Time between running the check during the start period (ms|s|m|h) (default 0s)
+      --health-start-period duration     Start period for the container to initialize before starting health-retries countdown (ms|s|m|h)
+                                         (default 0s)
+      --health-timeout duration          Maximum time to allow one check to run (ms|s|m|h) (default 0s)
+      --help                             Print usage
+  -h, --hostname string                  Container host name
+      --init                             Run an init inside the container that forwards signals and reaps processes
+  -i, --interactive                      Keep STDIN open even if not attached
+      --ip string                        IPv4 address (e.g., 172.30.100.104)
+      --ip6 string                       IPv6 address (e.g., 2001:db8::33)
+      --ipc string                       IPC mode to use
+      --isolation string                 Container isolation technology
+      --kernel-memory bytes              Kernel memory limit
+  -l, --label list                       Set meta data on a container
+      --label-file list                  Read in a line delimited file of labels
+      --link list                        Add link to another container
+      --link-local-ip list               Container IPv4/IPv6 link-local addresses
+      --log-driver string                Logging driver for the container
+      --log-opt list                     Log driver options
+      --mac-address string               Container MAC address (e.g., 92:d0:c6:0a:29:33)
+  -m, --memory bytes                     Memory limit
+      --memory-reservation bytes         Memory soft limit
+      --memory-swap bytes                Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      --memory-swappiness int            Tune container memory swappiness (0 to 100) (default -1)
+      --mount mount                      Attach a filesystem mount to the container
+      --name string                      Assign a name to the container
+      --network network                  Connect a container to a network
+      --network-alias list               Add network-scoped alias for the container
+      --no-healthcheck                   Disable any container-specified HEALTHCHECK
+      --oom-kill-disable                 Disable OOM Killer
+      --oom-score-adj int                Tune host's OOM preferences (-1000 to 1000)
+      --pid string                       PID namespace to use
+      --pids-limit int                   Tune container pids limit (set -1 for unlimited)
+      --platform string                  Set platform if server is multi-platform capable
+      --privileged                       Give extended privileges to this container
+  -p, --publish list                     Publish a container's port(s) to the host
+  -P, --publish-all                      Publish all exposed ports to random ports
+      --pull string                      Pull image before running ("always", "missing", "never") (default "missing")
+  -q, --quiet                            Suppress the pull output
+      --read-only                        Mount the container's root filesystem as read only
+      --restart string                   Restart policy to apply when a container exits (default "no")
+      --rm                               Automatically remove the container and its associated anonymous volumes when it exits
+      --runtime string                   Runtime to use for this container
+      --security-opt list                Security Options
+      --shm-size bytes                   Size of /dev/shm
+      --sig-proxy                        Proxy received signals to the process (default true)
+      --stop-signal string               Signal to stop the container
+      --stop-timeout int                 Timeout (in seconds) to stop a container
+      --storage-opt list                 Storage driver options for the container
+      --sysctl map                       Sysctl options (default map[])
+      --tmpfs list                       Mount a tmpfs directory
+  -t, --tty                              Allocate a pseudo-TTY
+      --ulimit ulimit                    Ulimit options (default [])
+      --use-api-socket                   Bind mount Docker API socket and required auth
+  -u, --user string                      Username or UID (format: <name|uid>[:<group|gid>])
+      --userns string                    User namespace to use
+      --uts string                       UTS namespace to use
+  -v, --volume list                      Bind mount a volume
+      --volume-driver string             Optional volume driver for the container
+      --volumes-from list                Mount volumes from the specified container(s)
+  -w, --workdir string                   Working directory inside the container
+-MacBook-Air fso-containers % docker container ls -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+e3324eefad72   ubuntu        "bash"     6 minutes ago    Exited (0) 5 minutes ago              goofy_chatterjee
+959ef23c1db7   hello-world   "/hello"   7 minutes ago    Exited (0) 7 minutes ago              nice_satoshi
+9c47c6328794   hello-world   "/hello"   12 minutes ago   Exited (0) 12 minutes ago             elegant_mendeleev
+-MacBook-Air fso-containers % docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+e3324eefad72   ubuntu        "bash"     7 minutes ago    Exited (0) 5 minutes ago              goofy_chatterjee
+959ef23c1db7   hello-world   "/hello"   8 minutes ago    Exited (0) 7 minutes ago              nice_satoshi
+9c47c6328794   hello-world   "/hello"   13 minutes ago   Exited (0) 12 minutes ago             elegant_mendeleev
+-MacBook-Air fso-containers % docker ps   
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+-MacBook-Air fso-containers % docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+e3324eefad72   ubuntu        "bash"     7 minutes ago    Exited (0) 5 minutes ago              goofy_chatterjee
+959ef23c1db7   hello-world   "/hello"   8 minutes ago    Exited (0) 7 minutes ago              nice_satoshi
+9c47c6328794   hello-world   "/hello"   13 minutes ago   Exited (0) 12 minutes ago             elegant_mendeleev
+-MacBook-Air fso-containers % docker start 959ef23c1db7
+959ef23c1db7
+-MacBook-Air fso-containers % docker ps -a             
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+e3324eefad72   ubuntu        "bash"     8 minutes ago    Exited (0) 7 minutes ago              goofy_chatterjee
+959ef23c1db7   hello-world   "/hello"   9 minutes ago    Exited (0) 4 seconds ago              nice_satoshi
+9c47c6328794   hello-world   "/hello"   14 minutes ago   Exited (0) 14 minutes ago             elegant_mendeleev
+-MacBook-Air fso-containers % docker start e3324eefad72 
+e3324eefad72
+-MacBook-Air fso-containers % docker ps -a              
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+e3324eefad72   ubuntu        "bash"     8 minutes ago    Up 1 second                           goofy_chatterjee
+959ef23c1db7   hello-world   "/hello"   9 minutes ago    Exited (0) 22 seconds ago             nice_satoshi
+9c47c6328794   hello-world   "/hello"   14 minutes ago   Exited (0) 14 minutes ago             elegant_mendeleev
+-MacBook-Air fso-containers % docker ps   
+CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS          PORTS     NAMES
+e3324eefad72   ubuntu    "bash"    9 minutes ago   Up 46 seconds             goofy_chatterjee
+-MacBook-Air fso-containers % docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                          PORTS     NAMES
+e3324eefad72   ubuntu        "bash"     9 minutes ago    Up 50 seconds                             goofy_chatterjee
+959ef23c1db7   hello-world   "/hello"   10 minutes ago   Exited (0) About a minute ago             nice_satoshi
+9c47c6328794   hello-world   "/hello"   15 minutes ago   Exited (0) 15 minutes ago                 elegant_mendeleev
+-MacBook-Air fso-containers % docker kill e3324eefad72  
+e3324eefad72
+-MacBook-Air fso-containers % docker ps -a              
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                          PORTS     NAMES
+e3324eefad72   ubuntu        "bash"     9 minutes ago    Exited (137) 2 seconds ago                goofy_chatterjee
+959ef23c1db7   hello-world   "/hello"   11 minutes ago   Exited (0) About a minute ago             nice_satoshi
+9c47c6328794   hello-world   "/hello"   16 minutes ago   Exited (0) 16 minutes ago                 elegant_mendeleev
+-MacBook-Air fso-containers % docker start -i e3324eefad72
+root@e3324eefad72:/# cd /usr/src/
+root@e3324eefad72:/usr/src# ls
+app
+root@e3324eefad72:/usr/src# cd app/
+root@e3324eefad72:/usr/src/app# ls
+index.js
+root@e3324eefad72:/usr/src/app# vi index.js          
+bash: vi: command not found
+root@e3324eefad72:/usr/src/app# apt-get update
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease [256 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 Packages [1776 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble/multiverse arm64 Packages [274 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 Packages [19.0 MB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble/restricted arm64 Packages [113 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [41.7 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [4825 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [1975 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [2388 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-backports/main arm64 Packages [49.4 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports noble-backports/universe arm64 Packages [34.7 kB]
+Get:15 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [42.1 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [2018 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1261 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [4620 kB]
+Fetched 39.1 MB in 7s (5523 kB/s)                                                                                                                     
+Reading package lists... Done
+root@e3324eefad72:/usr/src/app# apt-get install vi
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package vi
+root@e3324eefad72:/usr/src/app# apt-get install vim
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libexpat1 libgpm2 libpython3.12-minimal libpython3.12-stdlib libpython3.12t64 libreadline8t64 libsodium23 libsqlite3-0 media-types netbase
+  readline-common tzdata vim-common vim-runtime xxd
+Suggested packages:
+  gpm readline-doc ctags vim-doc vim-scripts
+The following NEW packages will be installed:
+  libexpat1 libgpm2 libpython3.12-minimal libpython3.12-stdlib libpython3.12t64 libreadline8t64 libsodium23 libsqlite3-0 media-types netbase
+  readline-common tzdata vim vim-common vim-runtime xxd
+0 upgraded, 16 newly installed, 0 to remove and 4 not upgraded.
+Need to get 16.1 MB of archives.
+After this operation, 73.8 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libexpat1 arm64 2.6.1-2ubuntu0.4 [77.5 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12-minimal arm64 3.12.3-1ubuntu0.12 [834 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 media-types all 10.1.0 [27.5 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 netbase all 6.4 [13.1 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 tzdata all 2025b-0ubuntu0.24.04.1 [276 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 readline-common all 8.2-4build1 [56.5 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libreadline8t64 arm64 8.2-4build1 [153 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsqlite3-0 arm64 3.45.1-1ubuntu2.5 [704 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12-stdlib arm64 3.12.3-1ubuntu0.12 [2037 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 vim-common all 2:9.1.0016-1ubuntu7.9 [386 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 xxd arm64 2:9.1.0016-1ubuntu7.9 [63.9 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libgpm2 arm64 1.20.7-11 [14.7 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12t64 arm64 3.12.3-1ubuntu0.12 [2282 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsodium23 arm64 1.0.18-1ubuntu0.24.04.1 [119 kB]
+Get:15 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 vim-runtime all 2:9.1.0016-1ubuntu7.9 [7281 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 vim arm64 2:9.1.0016-1ubuntu7.9 [1813 kB]
+Fetched 16.1 MB in 3s (4954 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libexpat1:arm64.
+(Reading database ... 4376 files and directories currently installed.)
+Preparing to unpack .../00-libexpat1_2.6.1-2ubuntu0.4_arm64.deb ...
+Unpacking libexpat1:arm64 (2.6.1-2ubuntu0.4) ...
+Selecting previously unselected package libpython3.12-minimal:arm64.
+Preparing to unpack .../01-libpython3.12-minimal_3.12.3-1ubuntu0.12_arm64.deb ...
+Unpacking libpython3.12-minimal:arm64 (3.12.3-1ubuntu0.12) ...
+Selecting previously unselected package media-types.
+Preparing to unpack .../02-media-types_10.1.0_all.deb ...
+Unpacking media-types (10.1.0) ...
+Selecting previously unselected package netbase.
+Preparing to unpack .../03-netbase_6.4_all.deb ...
+Unpacking netbase (6.4) ...
+Selecting previously unselected package tzdata.
+Preparing to unpack .../04-tzdata_2025b-0ubuntu0.24.04.1_all.deb ...
+Unpacking tzdata (2025b-0ubuntu0.24.04.1) ...
+Selecting previously unselected package readline-common.
+Preparing to unpack .../05-readline-common_8.2-4build1_all.deb ...
+Unpacking readline-common (8.2-4build1) ...
+Selecting previously unselected package libreadline8t64:arm64.
+Preparing to unpack .../06-libreadline8t64_8.2-4build1_arm64.deb ...
+Adding 'diversion of /lib/aarch64-linux-gnu/libhistory.so.8 to /lib/aarch64-linux-gnu/libhistory.so.8.usr-is-merged by libreadline8t64'
+Adding 'diversion of /lib/aarch64-linux-gnu/libhistory.so.8.2 to /lib/aarch64-linux-gnu/libhistory.so.8.2.usr-is-merged by libreadline8t64'
+Adding 'diversion of /lib/aarch64-linux-gnu/libreadline.so.8 to /lib/aarch64-linux-gnu/libreadline.so.8.usr-is-merged by libreadline8t64'
+Adding 'diversion of /lib/aarch64-linux-gnu/libreadline.so.8.2 to /lib/aarch64-linux-gnu/libreadline.so.8.2.usr-is-merged by libreadline8t64'
+Unpacking libreadline8t64:arm64 (8.2-4build1) ...
+Selecting previously unselected package libsqlite3-0:arm64.
+Preparing to unpack .../07-libsqlite3-0_3.45.1-1ubuntu2.5_arm64.deb ...
+Unpacking libsqlite3-0:arm64 (3.45.1-1ubuntu2.5) ...
+Selecting previously unselected package libpython3.12-stdlib:arm64.
+Preparing to unpack .../08-libpython3.12-stdlib_3.12.3-1ubuntu0.12_arm64.deb ...
+Unpacking libpython3.12-stdlib:arm64 (3.12.3-1ubuntu0.12) ...
+Selecting previously unselected package vim-common.
+Preparing to unpack .../09-vim-common_2%3a9.1.0016-1ubuntu7.9_all.deb ...
+Unpacking vim-common (2:9.1.0016-1ubuntu7.9) ...
+Selecting previously unselected package xxd.
+Preparing to unpack .../10-xxd_2%3a9.1.0016-1ubuntu7.9_arm64.deb ...
+Unpacking xxd (2:9.1.0016-1ubuntu7.9) ...
+Selecting previously unselected package libgpm2:arm64.
+Preparing to unpack .../11-libgpm2_1.20.7-11_arm64.deb ...
+Unpacking libgpm2:arm64 (1.20.7-11) ...
+Selecting previously unselected package libpython3.12t64:arm64.
+Preparing to unpack .../12-libpython3.12t64_3.12.3-1ubuntu0.12_arm64.deb ...
+Unpacking libpython3.12t64:arm64 (3.12.3-1ubuntu0.12) ...
+Selecting previously unselected package libsodium23:arm64.
+Preparing to unpack .../13-libsodium23_1.0.18-1ubuntu0.24.04.1_arm64.deb ...
+Unpacking libsodium23:arm64 (1.0.18-1ubuntu0.24.04.1) ...
+Selecting previously unselected package vim-runtime.
+Preparing to unpack .../14-vim-runtime_2%3a9.1.0016-1ubuntu7.9_all.deb ...
+Adding 'diversion of /usr/share/vim/vim91/doc/help.txt to /usr/share/vim/vim91/doc/help.txt.vim-tiny by vim-runtime'
+Adding 'diversion of /usr/share/vim/vim91/doc/tags to /usr/share/vim/vim91/doc/tags.vim-tiny by vim-runtime'
+Unpacking vim-runtime (2:9.1.0016-1ubuntu7.9) ...
+Selecting previously unselected package vim.
+Preparing to unpack .../15-vim_2%3a9.1.0016-1ubuntu7.9_arm64.deb ...
+Unpacking vim (2:9.1.0016-1ubuntu7.9) ...
+Setting up libexpat1:arm64 (2.6.1-2ubuntu0.4) ...
+Setting up media-types (10.1.0) ...
+Setting up libsodium23:arm64 (1.0.18-1ubuntu0.24.04.1) ...
+Setting up libgpm2:arm64 (1.20.7-11) ...
+Setting up libsqlite3-0:arm64 (3.45.1-1ubuntu2.5) ...
+Setting up libpython3.12-minimal:arm64 (3.12.3-1ubuntu0.12) ...
+Setting up xxd (2:9.1.0016-1ubuntu7.9) ...
+Setting up tzdata (2025b-0ubuntu0.24.04.1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.38.2 /usr/local/share/perl/5.38.2 /usr/lib/aarch64-linux-gnu/perl5/5.38 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.38 /usr/share/perl/5.38 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)
+debconf: falling back to frontend: Teletype
+Configuring tzdata
+------------------
+
+Please select the geographic area in which you live. Subsequent configuration questions will narrow this down by presenting a list of cities,
+representing the time zones in which they are located.
+
+  1. Africa  2. America  3. Antarctica  4. Arctic  5. Asia  6. Atlantic  7. Australia  8. Europe  9. Indian  10. Pacific  11. Etc  12. Legacy
+Geographic area: 9
+
+Please select the city or region corresponding to your time zone.
+
+  1. Antananarivo  2. Chagos  3. Christmas  4. Cocos  5. Comoro  6. Kerguelen  7. Mahe  8. Maldives  9. Mauritius  10. Mayotte  11. Reunion
+Time zone: 8   
+
+
+Current default time zone: 'Indian/Maldives'
+Local time is now:      Tue Mar 10 00:21:47 +05 2026.
+Universal Time is now:  Mon Mar  9 19:21:47 UTC 2026.
+Run 'dpkg-reconfigure tzdata' if you wish to change it.
+
+Setting up vim-common (2:9.1.0016-1ubuntu7.9) ...
+Setting up netbase (6.4) ...
+Setting up vim-runtime (2:9.1.0016-1ubuntu7.9) ...
+Setting up readline-common (8.2-4build1) ...
+Setting up libreadline8t64:arm64 (8.2-4build1) ...
+Setting up libpython3.12-stdlib:arm64 (3.12.3-1ubuntu0.12) ...
+Setting up libpython3.12t64:arm64 (3.12.3-1ubuntu0.12) ...
+Setting up vim (2:9.1.0016-1ubuntu7.9) ...
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/editor.1.gz because associated file /usr/share/man/man1/vim.1.gz (of link group editor) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/da/man1/editor.1.gz because associated file /usr/share/man/da/man1/vim.1.gz (of link group editor) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/de/man1/editor.1.gz because associated file /usr/share/man/de/man1/vim.1.gz (of link group editor) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/fr/man1/editor.1.gz because associated file /usr/share/man/fr/man1/vim.1.gz (of link group editor) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/it/man1/editor.1.gz because associated file /usr/share/man/it/man1/vim.1.gz (of link group editor) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/ja/man1/editor.1.gz because associated file /usr/share/man/ja/man1/vim.1.gz (of link group editor) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/pl/man1/editor.1.gz because associated file /usr/share/man/pl/man1/vim.1.gz (of link group editor) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/ru/man1/editor.1.gz because associated file /usr/share/man/ru/man1/vim.1.gz (of link group editor) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/tr/man1/editor.1.gz because associated file /usr/share/man/tr/man1/vim.1.gz (of link group editor) doesn't exist
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/ex (ex) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/ex.1.gz because associated file /usr/share/man/man1/vim.1.gz (of link group ex) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/da/man1/ex.1.gz because associated file /usr/share/man/da/man1/vim.1.gz (of link group ex) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/de/man1/ex.1.gz because associated file /usr/share/man/de/man1/vim.1.gz (of link group ex) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/fr/man1/ex.1.gz because associated file /usr/share/man/fr/man1/vim.1.gz (of link group ex) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/it/man1/ex.1.gz because associated file /usr/share/man/it/man1/vim.1.gz (of link group ex) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/ja/man1/ex.1.gz because associated file /usr/share/man/ja/man1/vim.1.gz (of link group ex) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/pl/man1/ex.1.gz because associated file /usr/share/man/pl/man1/vim.1.gz (of link group ex) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/ru/man1/ex.1.gz because associated file /usr/share/man/ru/man1/vim.1.gz (of link group ex) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/tr/man1/ex.1.gz because associated file /usr/share/man/tr/man1/vim.1.gz (of link group ex) doesn't exist
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rview (rview) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rvim (rvim) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vi (vi) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/vi.1.gz because associated file /usr/share/man/man1/vim.1.gz (of link group vi) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/da/man1/vi.1.gz because associated file /usr/share/man/da/man1/vim.1.gz (of link group vi) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/de/man1/vi.1.gz because associated file /usr/share/man/de/man1/vim.1.gz (of link group vi) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/fr/man1/vi.1.gz because associated file /usr/share/man/fr/man1/vim.1.gz (of link group vi) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/it/man1/vi.1.gz because associated file /usr/share/man/it/man1/vim.1.gz (of link group vi) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/ja/man1/vi.1.gz because associated file /usr/share/man/ja/man1/vim.1.gz (of link group vi) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/pl/man1/vi.1.gz because associated file /usr/share/man/pl/man1/vim.1.gz (of link group vi) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/ru/man1/vi.1.gz because associated file /usr/share/man/ru/man1/vim.1.gz (of link group vi) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/tr/man1/vi.1.gz because associated file /usr/share/man/tr/man1/vim.1.gz (of link group vi) doesn't exist
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/view (view) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/view.1.gz because associated file /usr/share/man/man1/vim.1.gz (of link group view) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/da/man1/view.1.gz because associated file /usr/share/man/da/man1/vim.1.gz (of link group view) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/de/man1/view.1.gz because associated file /usr/share/man/de/man1/vim.1.gz (of link group view) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/fr/man1/view.1.gz because associated file /usr/share/man/fr/man1/vim.1.gz (of link group view) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/it/man1/view.1.gz because associated file /usr/share/man/it/man1/vim.1.gz (of link group view) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/ja/man1/view.1.gz because associated file /usr/share/man/ja/man1/vim.1.gz (of link group view) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/pl/man1/view.1.gz because associated file /usr/share/man/pl/man1/vim.1.gz (of link group view) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/ru/man1/view.1.gz because associated file /usr/share/man/ru/man1/vim.1.gz (of link group view) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/tr/man1/view.1.gz because associated file /usr/share/man/tr/man1/vim.1.gz (of link group view) doesn't exist
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vim (vim) in auto mode
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vimdiff (vimdiff) in auto mode
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+root@e3324eefad72:/usr/src/app# vi index.js 
+root@e3324eefad72:/usr/src/app# apt-get -y install nano
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Suggested packages:
+  hunspell
+The following NEW packages will be installed:
+  nano
+0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.
+Need to get 281 kB of archives.
+After this operation, 909 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 nano arm64 7.2-2ubuntu0.1 [281 kB]
+Fetched 281 kB in 2s (180 kB/s)                   
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package nano.
+(Reading database ... 7895 files and directories currently installed.)
+Preparing to unpack .../nano_7.2-2ubuntu0.1_arm64.deb ...
+Unpacking nano (7.2-2ubuntu0.1) ...
+Setting up nano (7.2-2ubuntu0.1) ...
+update-alternatives: using /bin/nano to provide /usr/bin/editor (editor) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/editor.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group editor) doesn't exist
+update-alternatives: using /bin/nano to provide /usr/bin/pico (pico) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/pico.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group pico) doesn't exist
+root@e3324eefad72:/usr/src/app# vi index.js 
