@@ -1,0 +1,7 @@
+services:
+  app: # The name of the service, can be anything
+    image: node_app:1 # Declares which image to use
+    build: . # Declares where to build if image is not found
+    ports: # Declares the ports to publish
+      - 3002:3000
+    container_name: node_server_container
