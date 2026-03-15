@@ -1,0 +1,112 @@
+anoop@Anoops-MacBook-Air fso-containers % docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                           NAMES
+fbf125b56890   nginx     "/docker-entrypoint.…"   5 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp, [::]:8080->80/tcp         funny_hofstadter
+a282f29c1d65   mongo     "docker-entrypoint.s…"   31 minutes ago   Up 30 minutes   0.0.0.0:3456->27017/tcp, [::]:3456->27017/tcp   todo-backend-mongo-1
+anoop@Anoops-MacBook-Air fso-containers % docker exec -it a282 bash
+root@a282f29c1d65:/# ls
+bin  boot  data  dev  docker-entrypoint-initdb.d  etc  home  js-yaml.js  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@a282f29c1d65:/# ls /usr/
+bin/     games/   include/ lib/     libexec/ local/   sbin/    share/   src/     
+root@a282f29c1d65:/# ls /usr/bin/
+Display all 315 possibilities? (y or n)^C
+root@a282f29c1d65:/# mongosh
+Current Mongosh Log ID: 69b651a50fd2fed36c591666
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.7.0
+Using MongoDB:          undefined
+Using Mongosh:          2.7.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+test> show dbs
+MongoServerError[Unauthorized]: Command listDatabases requires authentication
+test> 
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+test> exit
+root@a282f29c1d65:/# mongosh -u root -p example
+Current Mongosh Log ID: 69b651e757a59318d5591666
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.7.0
+Using MongoDB:          8.2.5
+Using Mongosh:          2.7.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-03-15T05:55:41.730+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-03-15T05:55:41.731+00:00: We suggest setting the contents of sysfsFile to 0.
+   2026-03-15T05:55:41.731+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> show dbs
+admin         100.00 KiB
+config        104.00 KiB
+local          64.00 KiB
+the_database   56.00 KiB
+test> use the_database
+switched to db the_database
+the_database> > show collections
+| todos
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | > show collections
+    | ^
+  2 | todos
+  3 |
+
+the_database> > show collections
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | > show collections
+    | ^
+  2 |
+
+the_database> show collections
+todos
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('69b649baf8af22fb23591667'),
+    text: 'Write code daily',
+    done: true
+  },
+  {
+    _id: ObjectId('69b649baf8af22fb23591668'),
+    text: 'Learn about containers',
+    done: false
+  }
+]
+the_database> db.todos.insertOne({
+|   text: "Increase the number of tools in my tool belt",
+|   done: false
+| })
+{
+  acknowledged: true,
+  insertedId: ObjectId('69b6524157a59318d5591667')
+}
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('69b649baf8af22fb23591667'),
+    text: 'Write code daily',
+    done: true
+  },
+  {
+    _id: ObjectId('69b649baf8af22fb23591668'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('69b6524157a59318d5591667'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  }
+]
+the_database> exit
+root@a282f29c1d65:/# exit
+exit
